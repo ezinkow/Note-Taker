@@ -10,7 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const allNotes = [{
-    noteTitle: "test title",
+        id: "testtitle",
+        noteTitle: "test title",
         note: "test note",
 }]
 
@@ -31,14 +32,17 @@ app.get("/", function (req, res) {
 
 app.post("/api/notes", function(req, res) {
     var newNote = req.body
+    newNote.id = newNote.noteTitle.replace(/\s+/g, "").toLowerCase();
     console.log(newNote)
     allNotes.push(newNote)
     res.json(allNotes)
 })
 
+
+
 function writeNote(req, res) {
     const jsonString = JSON.stringify(allNotes)
-    fs.writeFile('./db/db.json', jsonString, err => {
+    fs.writeFile('/db.json', jsonString, err => {
         if (err) {
             console.log('Error writing file', err)
         } else {
@@ -53,12 +57,28 @@ function writeNote(req, res) {
     });
   }
   
-  var server = http.createServer(writeNote);
+//   var server = http.createServer(writeNote);
 
 
+app.get("/api/notes/:id", function (req, res) {
+        // return res.json(allNotes)
+    app.delete("/api/notes/:id", function (req, res) {
+        var urlID = req.params.id
+        if (allNotes[0].id = urlID) {
+            removeByAttr(allNotes, "id", urlID)
+            return res.json(allNotes)}
+        //     const jsonString = JSON.stringify(allNotes)
+        // fs.writeFile('/db.json', jsonString, err => {
+        //     if (err) {
+        //         console.log('Error deleting note', err)
+        //     } else {
+        //         console.log('Successfully deleted note')
+        //     }
+        // })
+        // }
 
-
-
+    })
+})
 
 
 
