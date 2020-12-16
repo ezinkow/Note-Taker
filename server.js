@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/public'));
 
 const PORT = 3000;
 
-
+//connect server with routes files
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 

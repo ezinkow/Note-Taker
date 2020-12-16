@@ -1,56 +1,37 @@
 var path = require("path")
 var noteData = require("../db/db.json")
 const fs = require("fs")
-// const { v4: uuidv4 } = require('uuid');
 
-
-module.exports = function(app) {
+//export routes to be available to other files
+module.exports = function (app) {
+    //get route for notes json page
     app.get("/api/notes", function (req, res) {
-        // var notes = req.params.note;
-        // console.log(notes)
-    
         return res.json(noteData)
     })
-
-    app.post("/api/notes", function(req, res) {
+// post route to add note to list
+    app.post("/api/notes", function (req, res) {
         var newNote = {
-                id:noteData.length,
-                title:req.body.title,
-                text:req.body.text
-            }
-            console.log(newNote)
+            //gives note id as an integer
+            id: noteData.length,
+            title: req.body.title,
+            text: req.body.text
+        }
+        console.log(newNote)
         noteData.push(newNote)
         res.json(noteData)
-        // console.log(noteData)
     })
 
-    // var removeByAttr = function(arr, attr, value){
-    //     var i = noteData.length;
-    //     while(i--){
-    //        if( noteData[i] 
-    //            && noteData[i].hasOwnProperty(attr) 
-    //            && (arguments.length > 2 && noteData[i][attr] === value ) ){ 
-    
-    //            noteData.splice(i,1);
-    
-    //        }
-    //     }
-    //     return noteData;
-    // }
-
+    // Delete Route for Notes
     app.delete("/api/notes/:id", function (req, res) {
+        // Grabbing the params passed to the function through the :id url
         var entryId = req.params.id
-        console.log("entryid", entryId)
-        for (var i = 0; i < noteData.length; i++) {
-            if (noteData[i].id === entryId) {
-                console.log("notedata", noteData)
-                // console.log(noteData[i].id)
-                var findIndex = noteData.indexOf(entryId)
-                console.log("findid", findIndex)
-                noteData.splice(findIndex, 1)
-                return res.json(noteData)
-            }
+        // Conditional testing if the noteData is at it's final index, if so, empty array.
+        if (noteData.length === 1) {
+            noteData = [];
+            res.json(noteData)
+        } else {
+            noteData.splice(entryId, 1);
+            res.json(noteData)
         }
     })
-
 }
