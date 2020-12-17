@@ -1,13 +1,13 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-// const favicon = require('express-favicon')
+const favicon = require('express-favicon')
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
-// app.use(favicon(__dirname + '/public/favicon.png'))
+app.use(favicon(__dirname + '/public/favicon.png'))
 
 const PORT = process.env.PORT || 3000;
 
