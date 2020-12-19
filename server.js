@@ -8,7 +8,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
-// app.use(favicon(__dirname + '/public/favicon.png'))
 
 //connect server with routes files
 require("./routes/apiRoutes")(app);
