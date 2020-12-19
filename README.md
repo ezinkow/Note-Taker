@@ -1,6 +1,6 @@
 # Note Taker Application
 
-
+![image](https://user-images.githubusercontent.com/71417500/102575684-58549e00-40b9-11eb-92c9-04c093cb6ee3.png)
 
 ## Link to application on Heroku:
 
