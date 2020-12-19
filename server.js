@@ -22,6 +22,6 @@ app.listen(PORT, function() {
     console.log("Server is listening on PORT: " + PORT);
   });
 
-//   const server = app.listen(2000, function(){
-//     console.log('server is running at %s .', server.address().port);
-// });
+  const server = app.listen(2000, function(){
+    console.log('server is running at %s .', server.address().port);
+});
