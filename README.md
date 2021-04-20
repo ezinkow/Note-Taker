@@ -8,7 +8,7 @@ https://note-taker-ez.herokuapp.com/notes
 
 ## About This Project:
 
-This was a homework assignment as part of the Northwestern Coding Bootcamp to build an application to easily write a note, and be able to save it and display it on the page, and delete any notes we want.
+This is an application to easily write a note, and be able to save it and display it on the page, and delete any notes we want.
 This was built with HTML, Javascript, jQuery, Express, Heroku, and fs 
 
 ## Summary of Project:
